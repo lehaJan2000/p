@@ -11,7 +11,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('profile/', aplication_render, name='profile'),
     path('create_aplication/', createapl, name='createapl'),
-    path('profile/<int:id>', views.delete, name='delete'),
+    path('delete/<int:id>', views.delete, name='delete'),
     path('profile/<str:status>', apl_filter, name='filter'),
 ]
 

@@ -44,11 +44,10 @@ def profile(request):
 
 @login_required
 def delete(request, id):
-    apl = Aplication.objects.filter(id=id).all()
-    if request.method == 'POST':
+    apl = Aplication.objects.filter(id=id).get()
+    if apl:
         apl.delete()
-        return redirect('profile')
-    return render(request, 'main/profile.html')
+    return redirect('profile')
 
 
 # регистрация, вход, главная страница, профиль, заявка, создание заявки
