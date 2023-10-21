@@ -4,16 +4,16 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <h4 class="mr-lg-5" style="padding-bottom: 10px">Здравствуйте, {{ user.username }}</h4>
-    <div class="h5 mr-lg-4 p-3 mb-2 border text-center" style="background-color:black; color: white">Ваши заявки</div>
+    <h4 class="mr-lg-5" style="padding-bottom: 10px; font-size: 30px">Здравствуйте, {{ user.username }}!</h4>
+    <div class style = "color:black; font-size: 30px">Ваши заявки:</div>
     <div class="d-flex justify-content-start mr-lg-4 mb-2 text-secondary">
-        <a class="btn  text-secondary border m-3" href="{% url 'profile' %}"
+        <a class="btn border m-3" href="{% url 'profile' %}"
            style="background-color:black; color: white">Все</a>
-        <a class="btn  text-secondary border m-3" href="{% url 'filter' status='new' %}"
+        <a class="btn border m-3" href="{% url 'filter' status='new' %}"
            style="background-color:black; color: white">Новые</a>
-        <a class="btn  text-secondary border m-3" href="{% url 'filter' status='done' %}"
+        <a class="btn border m-3" href="{% url 'filter' status='done' %}"
            style="background-color:black; color: white">Выполненые</a>
-        <a class="btn  text-secondary border m-3" href="{% url 'filter' status='received' %}"
+        <a class="btn border m-3" href="{% url 'filter' status='received' %}"
            style="background-color:black; color: white">Принятые</a>
     </div>
     {% if apl_items %}
@@ -26,13 +26,9 @@
                     <br> <b>Дата добавления:</b> {{ item.date }} <br> <b>Описание:</b> {{ item.description }}
                     <br><b>Статус: </b>{{ item.status_verbose }}</p>
                 {% if item.status == 'new' %}
-                    <a class="btn ml-auto mt-auto h-100 p-1" href="{% url 'profile' %}" onclick='del(this,{{ item.pk }})'>
-                    <a href = "/delete/{{ item.pk }}">Удалить</a>
+                    <a class="btn ml-auto mt-auto h-100 p-1" href="/delete/{{ item.pk }}" onclick='del(this,{{ item.pk }})'>
                         <button type="button" class="btn btn-outline-danger mt-auto  ml-auto h-25">Удалить</button>
-
-                        <a class="delButton mt-auto ml-auto" hidden="true" href="{% url 'delete' item.pk %}">
-                            <button type="button" class="btn btn-outline-danger">Точно удалить</button>
-                        </a>
+                        <a class="delButton mt-auto ml-auto" hidden="true" href="{% url 'delete' item.pk %}"></a>
                     </a>
                 {% endif %}
 
